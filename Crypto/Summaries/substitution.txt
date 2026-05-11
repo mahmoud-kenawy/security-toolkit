@@ -1,0 +1,32 @@
+The Simple Substitution Cipher replaces each letter of the plaintext with a fixed corresponding letter from a scrambled key alphabet. Unlike Caesar (which shifts uniformly), each letter has its own unique mapping.
+
+How It Works:
+A 26-character key alphabet is defined. Every letter in the plaintext is replaced by the letter at the corresponding position in the key.
+
+Example (key = "POIUYTRWEQASDFGHJKLMNBVCXZ"):
+  Plaintext: A B C D E F ...
+  Ciphertext: P O I U Y T ...
+
+  Encrypting "HELLO":
+  H→W, E→T (wait — let's trace: A→P, B→O, C→I, D→U, E→Y, F→T, G→R, H→W)
+  HELLO → WTSSG
+
+Decryption: find the ciphertext letter in the key alphabet and return the corresponding standard letter.
+
+Key Parameters:
+- Key: any permutation of the 26-letter alphabet (26! ≈ 4 × 10²⁶ possible keys).
+- Non-alpha characters pass through unchanged.
+
+Strengths:
+- Enormous keyspace (26!) — brute force is completely infeasible.
+- Easy to implement by hand.
+
+Weaknesses:
+- Single-letter frequency analysis breaks it in seconds for long texts.
+- English letter frequencies (E, T, A, O...) are preserved.
+- Digraph and trigraph analysis further accelerates breaking.
+
+Real-World Use:
+- Used in cryptoquote puzzles and newspaper cipher games.
+- The basis of the Enigma machine's substitution step (with rotating rotors).
+- Historical use in secret societies and early espionage.

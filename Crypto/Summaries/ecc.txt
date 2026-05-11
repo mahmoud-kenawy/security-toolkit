@@ -1,0 +1,12 @@
+Elliptic Curve Cryptography (ECC) is a modern approach to public-key cryptography based on the algebraic structure of elliptic curves over finite fields. 
+
+Unlike older systems like RSA that rely on the difficulty of factoring large prime numbers, ECC relies on the difficulty of the Elliptic Curve Discrete Logarithm Problem (ECDLP). This means ECC can provide the same level of security as RSA but with significantly smaller key sizes, leading to faster computations and lower memory usage.
+
+In Elliptic Curve Diffie-Hellman (ECDH) Key Exchange:
+1. Alice and Bob agree on a common elliptic curve (e.g., brainpoolP256r1) and a base point (G).
+2. Alice generates a random private key (Ka) and computes her public key by multiplying the base point (X = Ka * G).
+3. Bob does the same, generating his private key (Kb) and public key (Y = Kb * G).
+4. They exchange their public keys over an insecure channel.
+5. Alice computes the shared secret by multiplying Bob's public key with her private key (Ka * Y).
+6. Bob computes the shared secret by multiplying Alice's public key with his private key (Kb * X).
+7. Because of the mathematical properties of the curve, Ka * (Kb * G) is exactly equal to Kb * (Ka * G), resulting in the same shared secret for both parties!

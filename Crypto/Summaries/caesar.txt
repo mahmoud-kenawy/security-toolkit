@@ -1,0 +1,28 @@
+The Caesar Cipher is one of the oldest and simplest substitution ciphers, named after Julius Caesar who used it for military communication. Each letter in the plaintext is shifted a fixed number of positions along the alphabet.
+
+How It Works:
+Encryption: C = (P + key) mod 26
+Decryption: P = (C - key) mod 26
+Where P is the plaintext letter position (A=0, Z=25) and key is the shift value.
+
+Example (key = 4):
+  Plaintext:  A T T A C K A T O N C E
+  Ciphertext: E X X E G O E X S R G I
+
+Key Parameters:
+- Key (shift): an integer from 1 to 25.
+- Key 13 is the special case "ROT13" — its own inverse.
+
+Strengths:
+- Simple to understand and implement.
+- Works on any alphabet.
+
+Weaknesses:
+- Only 25 possible keys — trivially brute-forced.
+- Vulnerable to frequency analysis (letter distributions are preserved).
+- No resistance to modern cryptanalysis.
+
+Real-World Use:
+- ROT13 is still used in forums to hide spoilers.
+- Historical context: Julius Caesar's communications.
+- Educational introduction to symmetric cipher concepts.

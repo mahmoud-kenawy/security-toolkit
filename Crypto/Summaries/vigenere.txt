@@ -1,0 +1,32 @@
+The Vigenère Cipher is a polyalphabetic substitution cipher that uses a keyword to apply a different Caesar shift to each letter of the plaintext, making it significantly harder to crack than simple Caesar.
+
+How It Works:
+The keyword is repeated (or trimmed) to match the length of the plaintext. Each letter of the plaintext is shifted by the corresponding keyword letter's position.
+
+Encryption: C[i] = (P[i] + K[i]) mod 26
+Decryption: P[i] = (C[i] - K[i] + 26) mod 26
+
+Example (key = "KEY"):
+  Plaintext:  H  E  L  L  O
+  Key:        K  E  Y  K  E   (repeated)
+  Shifts:    +10 +4 +24 +10 +4
+  Ciphertext: R  I  J  V  S
+
+Key Parameters:
+- Keyword: any string of letters. Longer keywords = more security.
+- Case-insensitive. Non-alpha characters pass through unchanged.
+
+Strengths:
+- Multiple Caesar shifts defeat simple frequency analysis.
+- Keyspace grows with keyword length — much stronger than Caesar.
+- Called "le chiffre indéchiffrable" (the indecipherable cipher) for centuries.
+
+Weaknesses:
+- Vulnerable to Kasiski examination (finding repeated keyword patterns).
+- Broken by Charles Babbage and Friedrich Kasiski in the 19th century.
+- Weak against modern statistical attacks with known keyword length.
+
+Real-World Use:
+- Precursor to the one-time pad (unbreakable if key is truly random and as long as message).
+- Taught extensively in cryptography courses as a stepping stone to stream ciphers.
+- Inspired modern symmetric key concepts.

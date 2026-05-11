@@ -1,0 +1,35 @@
+The Columnar Transposition Cipher rearranges the plaintext by writing it into a grid with a fixed number of columns (determined by the key), then reading the columns in the order specified by the key.
+
+How It Works:
+The plaintext is written left-to-right into rows. Columns are then read out in ascending order of the key digits.
+
+Example (key = "1320", plaintext = "HELLO WORLD"):
+  Write into grid (4 columns):
+    Key:  1  3  2  0
+    Row1: H  E  L  L
+    Row2: O     W  O
+    Row3: R  L  D
+
+  Read columns in order 0→1→2→3:
+    Col 0 (key=0): L, O       → LO
+    Col 1 (key=1): H, O, R    → HOR
+    Col 2 (key=2): L, W, D    → LWD
+    Col 3 (key=3): E,  , L    → E L
+  Ciphertext: LOHORLWDE L
+
+Key Parameters:
+- Key: a string of unique digits indicating column reading order.
+- Longer key = larger grid = harder to crack.
+
+Strengths:
+- Harder to crack than Rail Fence because column ordering adds more variation.
+- Combining with substitution creates a much stronger cipher.
+
+Weaknesses:
+- Vulnerable to anagramming attacks with known plaintext length.
+- Frequency of letters unchanged; only positions shift.
+
+Real-World Use:
+- Used in WWI and WWII military communications.
+- Combined with other ciphers in the German ADFGVX cipher.
+- Foundation for understanding block cipher permutation layers.

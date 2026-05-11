@@ -1,0 +1,31 @@
+The Rail Fence Cipher is a transposition cipher that rearranges the plaintext by writing it in a zigzag pattern across a number of "rails" (rows), then reading off each rail from left to right.
+
+How It Works:
+Letters are placed diagonally on alternating rails, forming a zigzag. The cipher text is formed by reading each rail independently from top to bottom.
+
+Example (key = 3 rails, plaintext = WEAREDISCOVERED):
+  Rail 1: W . . . E . . . I . . . V . .
+  Rail 2: . E . R . D . S . O . E . E .
+  Rail 3: . . A . . . C . . . R . . . D
+
+  Ciphertext: WEIVERDSOEEACRD (read rail by rail)
+
+Decryption works by rebuilding the zigzag grid with placeholder positions, then filling in the ciphertext and reading off diagonally.
+
+Key Parameters:
+- Number of rails (key): an integer ≥ 2.
+- More rails = more scrambling, but also more structure to exploit.
+
+Strengths:
+- Simple to implement.
+- Changes character positions — not identities — so frequency analysis of letters is unchanged but patterns shift.
+
+Weaknesses:
+- Very small effective keyspace (only as many keys as rails, usually 2–10).
+- Easily brute-forced or solved with pencil-and-paper.
+- No substitution — every plaintext character appears unchanged in ciphertext.
+
+Real-World Use:
+- Historical telegraph ciphers.
+- Used as a teaching example of transposition ciphers.
+- Occasionally combined with substitution for layered classical ciphers.

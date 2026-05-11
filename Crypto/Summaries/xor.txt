@@ -1,0 +1,42 @@
+The XOR (Exclusive OR) Cipher is a symmetric bitwise cipher that applies the XOR operation between each byte of the plaintext and a corresponding byte of the key. Its most powerful property: applying XOR twice with the same key restores the original data — making encryption and decryption identical operations.
+
+How It Works:
+XOR Truth Table:
+  0 XOR 0 = 0
+  0 XOR 1 = 1
+  1 XOR 0 = 1
+  1 XOR 1 = 0
+
+For each character:
+  Ciphertext[i] = Plaintext[i] XOR Key[i % len(Key)]
+
+Decryption (identical operation):
+  Plaintext[i] = Ciphertext[i] XOR Key[i % len(Key)]
+
+Example ('H' XOR 'p'):
+  'H' = 01001000 (ASCII 72)
+  'p' = 01110000 (ASCII 112)
+  XOR = 00111000 (ASCII 56 = '8')
+
+  Apply again: '8' XOR 'p' = 'H' ✓
+
+Key Parameters:
+- XOR Key: any string. The key repeats cyclically if shorter than the plaintext.
+- Longer, more random keys = stronger encryption.
+
+Strengths:
+- Extremely fast — a single CPU instruction per byte.
+- With a truly random key as long as the message (one-time pad), it is information-theoretically unbreakable.
+- Symmetric: same function for encrypt and decrypt.
+
+Weaknesses:
+- Repeating short keys are catastrophically weak — vulnerable to known-plaintext attacks.
+- If the same key is reused for two messages, XORing the ciphertexts reveals the XOR of the plaintexts.
+- Not suitable for standalone security with short or predictable keys.
+
+Real-World Use:
+- Core operation in stream ciphers (ChaCha20, RC4, Salsa20).
+- Used inside block cipher modes (CBC XORs each block with the previous ciphertext).
+- OTP (One-Time Pad): provably unbreakable version using random key = message length.
+- Checksums and CRC calculations in networking.
+- Malware obfuscation (simple XOR with a fixed key to hide strings).

@@ -1,0 +1,29 @@
+Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters (A-Z, a-z, 0-9, +, /). It is not a cipher — it provides no security — but it is fundamental to how data is transported safely across systems that only handle text.
+
+How It Works:
+Base64 takes every 3 bytes (24 bits) of input and splits them into 4 groups of 6 bits each. Each 6-bit group maps to a character from the Base64 alphabet. If the input is not divisible by 3, padding characters (=) are appended.
+
+Example:
+  Input:   H    e    l
+  Bytes:   72   101  108
+  Binary:  01001000 01100101 01101100
+  6-bit:   010010 000110 010101 101100
+  Base64:  S      G      V      s
+
+Key Parameters:
+- No key required — encoding and decoding are deterministic.
+- Padding: uses '=' to pad output to a multiple of 4 characters.
+
+Strengths:
+- Universal compatibility with text-based protocols (HTTP, email, JSON).
+- Lossless — always perfectly reversible.
+
+Weaknesses:
+- Zero security — trivially reversible by anyone.
+- Increases data size by ~33%.
+
+Real-World Use:
+- Embedding images in HTML/CSS (data URIs).
+- Encoding binary attachments in email (MIME).
+- Transmitting API tokens and JWT headers.
+- Storing binary data in JSON or XML.
