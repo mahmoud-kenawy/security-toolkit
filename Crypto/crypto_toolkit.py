@@ -197,15 +197,28 @@ class CryptoEngine:
     @staticmethod
     def xor_encrypt(text, key):
         if not key: raise ValueError("XOR key cannot be empty")
-        res = ""
-        for i, char in enumerate(text):
-            res += chr(ord(char) ^ ord(key[i % len(key)]))
-        return res
+        import base64
+        text_bytes = text.encode('utf-8')
+        key_bytes = key.encode('utf-8')
+        res = bytearray()
+        for i, b in enumerate(text_bytes):
+            res.append(b ^ key_bytes[i % len(key_bytes)])
+        return base64.b64encode(res).decode('utf-8')
 
     @staticmethod
     def xor_decrypt(text, key):
         if not key: raise ValueError("XOR key cannot be empty")
-        return CryptoEngine.xor_encrypt(text, key)
+        import base64
+        key_bytes = key.encode('utf-8')
+        try:
+            cipher_bytes = base64.b64decode(text.encode('utf-8'))
+        except Exception:
+            raise ValueError("Invalid XOR ciphertext (must be Base64 encoded)")
+            
+        res = bytearray()
+        for i, b in enumerate(cipher_bytes):
+            res.append(b ^ key_bytes[i % len(key_bytes)])
+        return res.decode('utf-8', errors='replace')
 
     @staticmethod
     def jwt_encrypt(text, key):
