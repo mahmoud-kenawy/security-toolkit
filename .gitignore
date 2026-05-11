@@ -1,2 +1,15 @@
-D:\My\Project\SC\Crypto\__pycache__
-__pycache__
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+venv/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
